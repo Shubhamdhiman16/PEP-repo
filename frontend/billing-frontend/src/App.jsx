@@ -1,8 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+<<<<<<< HEAD
 import AdminDashboard from "./pages/AdminDashboard";
 import Products from "./pages/Products";
 import Reports from "./pages/Reports";
 import Settings from "./pages/Settings";
+=======
+>>>>>>> f9c3014ef43bfc89bcaa852c26f65b0626f714bf
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
@@ -43,6 +46,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+<<<<<<< HEAD
         {/* Admin Protected Routes */}
         <Route
           path="/admin/dashboard"
@@ -77,6 +81,8 @@ function App() {
           }
         />
 
+=======
+>>>>>>> f9c3014ef43bfc89bcaa852c26f65b0626f714bf
       </Routes>
     </BrowserRouter>
   );
