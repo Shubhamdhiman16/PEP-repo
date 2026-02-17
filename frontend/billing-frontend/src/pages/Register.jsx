@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { registerUser } from "../services/authService";
 import "./Register.css";
 
 function Register() {
@@ -9,6 +10,8 @@ function Register() {
     password: "",
   });
 
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -16,20 +19,26 @@ function Register() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(form);
+
+    try {
+      await registerUser(form);
+      alert("Registration successful!");
+      navigate("/");
+    } catch (error) {
+      alert("Registration failed");
+      console.error(error);
+    }
   };
 
   return (
     <div className="register-wrapper">
-      {/* Left side */}
       <div className="register-left">
         <h1>Join Billing System</h1>
         <p>Create your account to manage invoices easily.</p>
       </div>
 
-      {/* Right side */}
       <div className="register-right">
         <form className="register-card" onSubmit={handleSubmit}>
           <h2>Create Account</h2>

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { loginUser } from "../services/authService";
 import "./Login.css";
 
 function Login() {
@@ -8,6 +9,8 @@ function Login() {
     password: "",
   });
 
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -15,20 +18,30 @@ function Login() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(form);
+
+    try {
+      const data = await loginUser(form);
+
+      // store token
+      localStorage.setItem("token", data.token);
+
+      // redirect to dashboard
+      navigate("/dashboard");
+    } catch (error) {
+      alert("Invalid login credentials");
+      console.error(error);
+    }
   };
 
   return (
     <div className="login-wrapper">
-      {/* Left Side */}
       <div className="login-left">
         <h1>Billing System</h1>
         <p>Manage your invoices and billing operations efficiently.</p>
       </div>
 
-      {/* Right Side */}
       <div className="login-right">
         <form className="login-card" onSubmit={handleSubmit}>
           <h2>Welcome Back</h2>
