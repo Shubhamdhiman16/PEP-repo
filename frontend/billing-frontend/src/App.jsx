@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import AdminDashboard from "./pages/AdminDashboard";
-import Products from "./pages/Products";
-import Reports from "./pages/Reports";
-import Settings from "./pages/Settings";
+// import AdminDashboard from "./pages/AdminDashboard";
+// import Products from "./pages/Products";
+// import Reports from "./pages/Reports";
+// import Settings from "./pages/Settings";
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -46,7 +46,7 @@ function App() {
           }
         />
 
-        {/* Admin Protected Routes */}
+        {/* Admin Protected Routes
         <Route
           path="/admin/dashboard"
           element={
@@ -78,7 +78,7 @@ function App() {
               <Settings />
             </ProtectedRoute>
           }
-        />
+        /> */}
       </Routes>
     </BrowserRouter>
   );

@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-function Register() {
-  return (
-    <div>
-      <h2>Register Page</h2>
-=======
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../services/authService";
@@ -34,7 +28,6 @@ function Register() {
       navigate("/");
     } catch (error) {
       alert("Registration failed");
-      console.error(error);
     }
   };
 
@@ -83,7 +76,6 @@ function Register() {
           </p>
         </form>
       </div>
->>>>>>> f9c3014ef43bfc89bcaa852c26f65b0626f714bf
     </div>
   );
 }

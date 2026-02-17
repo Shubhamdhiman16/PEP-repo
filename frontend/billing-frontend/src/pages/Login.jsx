@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-function Login() {
-  return (
-    <div>
-      <h2>Login Page</h2>
-=======
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../services/authService";
@@ -29,15 +23,10 @@ function Login() {
 
     try {
       const data = await loginUser(form);
-
-      // store token
       localStorage.setItem("token", data.token);
-
-      // redirect to dashboard
       navigate("/dashboard");
     } catch (error) {
       alert("Invalid login credentials");
-      console.error(error);
     }
   };
 
@@ -45,7 +34,7 @@ function Login() {
     <div className="login-wrapper">
       <div className="login-left">
         <h1>Billing System</h1>
-        <p>Manage your invoices and billing operations efficiently.</p>
+        <p>Manage your invoices efficiently.</p>
       </div>
 
       <div className="login-right">
@@ -77,7 +66,6 @@ function Login() {
           </p>
         </form>
       </div>
->>>>>>> f9c3014ef43bfc89bcaa852c26f65b0626f714bf
     </div>
   );
 }
