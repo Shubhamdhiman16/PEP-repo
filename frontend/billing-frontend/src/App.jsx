@@ -1,7 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import AdminDashboard from "./pages/AdminDashboard";
+import Products from "./pages/Products";
+import Reports from "./pages/Reports";
+import Settings from "./pages/Settings";
+
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/Dashboard"
 import CreateBill from "./pages/CreateBill";
 import Bills from "./pages/Bills";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -36,6 +42,40 @@ function App() {
           element={
             <ProtectedRoute>
               <Bills />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Admin Protected Routes */}
+        <Route
+          path="/admin/dashboard"
+          element={
+            <ProtectedRoute>
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path="/admin/products"
+          element={
+            <ProtectedRoute>
+              <Products />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path="/admin/reports"
+          element={
+            <ProtectedRoute>
+              <Reports />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/settings"
+          element={
+            <ProtectedRoute>
+              <Settings />
             </ProtectedRoute>
           }
         />

@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+function Login() {
+  return (
+    <div>
+      <h2>Login Page</h2>
+=======
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../services/authService";
@@ -71,6 +77,7 @@ function Login() {
           </p>
         </form>
       </div>
+>>>>>>> f9c3014ef43bfc89bcaa852c26f65b0626f714bf
     </div>
   );
 }
