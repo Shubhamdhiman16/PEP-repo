@@ -33,5 +33,19 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+// Update bill
+router.put("/:id", async (req, res) => {
+  try {
+    const bill = await Billing.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    res.json(bill);
+  } catch (error) {
+    res.status(500).json({ message: "Error updating bill" });
+  }
+});
+
 
 module.exports = router;

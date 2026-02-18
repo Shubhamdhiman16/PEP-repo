@@ -5,6 +5,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import Reports from "./pages/Reports";
 // import Settings from "./pages/Settings";
 
+import EditBill from "./pages/EditBill";
+
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard"
@@ -36,6 +38,16 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+        <Route
+  path="/edit-bill/:id"
+  element={
+    <ProtectedRoute>
+      <EditBill />
+    </ProtectedRoute>
+  }
+/>
+
 
         <Route
           path="/bills"

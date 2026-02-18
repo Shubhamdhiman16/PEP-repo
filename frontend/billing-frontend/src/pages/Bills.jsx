@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { getBills, deleteBill } from "../services/billingService";
 
 function Bills() {
   const [bills, setBills] = useState([]);
+  const navigate = useNavigate();
 
   const fetchBills = async () => {
     try {
@@ -21,7 +23,7 @@ function Bills() {
   const handleDelete = async (id) => {
     try {
       await deleteBill(id);
-      alert("Bill deleted");
+      alert("Bill deleted successfully");
       fetchBills(); // refresh list
     } catch (error) {
       alert("Failed to delete bill");
@@ -48,6 +50,7 @@ function Bills() {
               <th>Action</th>
             </tr>
           </thead>
+
           <tbody>
             {bills.length === 0 ? (
               <tr>
@@ -57,8 +60,22 @@ function Bills() {
               bills.map((bill) => (
                 <tr key={bill._id}>
                   <td>{bill.customerName}</td>
-                  <td>{bill.totalAmount}</td>
+                  <td>₹{bill.totalAmount}</td>
                   <td>
+                    <button
+                      onClick={() => navigate(`/edit-bill/${bill._id}`)}
+                      style={{
+                        background: "orange",
+                        color: "white",
+                        border: "none",
+                        padding: "6px 10px",
+                        marginRight: "5px",
+                        cursor: "pointer",
+                      }}
+                    >
+                      Edit
+                    </button>
+
                     <button
                       onClick={() => handleDelete(bill._id)}
                       style={{
