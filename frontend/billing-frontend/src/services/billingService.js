@@ -24,4 +24,17 @@ export const getBills = async () => {
   });
 
   return res.data;
+
 };
+export const deleteBill = async (id) => {
+  const token = localStorage.getItem("token");
+
+  const res = await axios.delete(`${API}/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return res.data;
+};
+
