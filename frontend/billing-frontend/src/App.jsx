@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import Settings from "./pages/Settings";
 
 import EditBill from "./pages/EditBill";
-
+import ViewBill from "./pages/ViewBill";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard"
@@ -47,6 +47,16 @@ function App() {
     </ProtectedRoute>
   }
 />
+
+<Route
+  path="/view-bill/:id"
+  element={
+    <ProtectedRoute>
+      <ViewBill />
+    </ProtectedRoute>
+  }
+/>
+
 
 
         <Route

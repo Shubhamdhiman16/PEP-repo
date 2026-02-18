@@ -41,9 +41,13 @@ function Bills() {
         <table
           border="1"
           cellPadding="10"
-          style={{ marginTop: "20px", width: "100%" }}
+          style={{
+            marginTop: "20px",
+            width: "100%",
+            borderCollapse: "collapse",
+          }}
         >
-          <thead>
+          <thead style={{ background: "#4a90e2", color: "white" }}>
             <tr>
               <th>Customer Name</th>
               <th>Total Amount</th>
@@ -54,7 +58,9 @@ function Bills() {
           <tbody>
             {bills.length === 0 ? (
               <tr>
-                <td colSpan="3">No bills found</td>
+                <td colSpan="3" style={{ textAlign: "center" }}>
+                  No bills found
+                </td>
               </tr>
             ) : (
               bills.map((bill) => (
@@ -62,6 +68,20 @@ function Bills() {
                   <td>{bill.customerName}</td>
                   <td>₹{bill.totalAmount}</td>
                   <td>
+                    <button
+                      onClick={() => navigate(`/view-bill/${bill._id}`)}
+                      style={{
+                        background: "green",
+                        color: "white",
+                        border: "none",
+                        padding: "6px 10px",
+                        marginRight: "5px",
+                        cursor: "pointer",
+                      }}
+                    >
+                      View
+                    </button>
+
                     <button
                       onClick={() => navigate(`/edit-bill/${bill._id}`)}
                       style={{
