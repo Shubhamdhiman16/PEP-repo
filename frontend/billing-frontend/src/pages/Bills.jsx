@@ -24,7 +24,7 @@ function Bills() {
     try {
       await deleteBill(id);
       alert("Bill deleted successfully");
-      fetchBills(); // refresh list
+      fetchBills();
     } catch (error) {
       alert("Failed to delete bill");
       console.error(error);
@@ -35,85 +35,65 @@ function Bills() {
     <div>
       <Navbar />
 
-      <div style={{ padding: "30px" }}>
-        <h2>All Bills</h2>
+      <div className="page-container">
+        <div className="card">
+          <h2>All Bills</h2>
 
-        <table
-          border="1"
-          cellPadding="10"
-          style={{
-            marginTop: "20px",
-            width: "100%",
-            borderCollapse: "collapse",
-          }}
-        >
-          <thead style={{ background: "#4a90e2", color: "white" }}>
-            <tr>
-              <th>Customer Name</th>
-              <th>Total Amount</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {bills.length === 0 ? (
+          <table className="table">
+            <thead>
               <tr>
-                <td colSpan="3" style={{ textAlign: "center" }}>
-                  No bills found
-                </td>
+                <th>Customer Name</th>
+                <th>Total Amount</th>
+                <th>Action</th>
               </tr>
-            ) : (
-              bills.map((bill) => (
-                <tr key={bill._id}>
-                  <td>{bill.customerName}</td>
-                  <td>₹{bill.totalAmount}</td>
-                  <td>
-                    <button
-                      onClick={() => navigate(`/view-bill/${bill._id}`)}
-                      style={{
-                        background: "green",
-                        color: "white",
-                        border: "none",
-                        padding: "6px 10px",
-                        marginRight: "5px",
-                        cursor: "pointer",
-                      }}
-                    >
-                      View
-                    </button>
+            </thead>
 
-                    <button
-                      onClick={() => navigate(`/edit-bill/${bill._id}`)}
-                      style={{
-                        background: "orange",
-                        color: "white",
-                        border: "none",
-                        padding: "6px 10px",
-                        marginRight: "5px",
-                        cursor: "pointer",
-                      }}
-                    >
-                      Edit
-                    </button>
-
-                    <button
-                      onClick={() => handleDelete(bill._id)}
-                      style={{
-                        background: "red",
-                        color: "white",
-                        border: "none",
-                        padding: "6px 10px",
-                        cursor: "pointer",
-                      }}
-                    >
-                      Delete
-                    </button>
+            <tbody>
+              {bills.length === 0 ? (
+                <tr>
+                  <td colSpan="3" style={{ textAlign: "center" }}>
+                    No bills found
                   </td>
                 </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+              ) : (
+                bills.map((bill) => (
+                  <tr key={bill._id}>
+                    <td>{bill.customerName}</td>
+                    <td>₹{bill.totalAmount}</td>
+                    <td>
+                      <button
+                        className="btn btn-view"
+                        onClick={() =>
+                          navigate(`/view-bill/${bill._id}`)
+                        }
+                      >
+                        View
+                      </button>
+
+                      <button
+                        className="btn btn-edit"
+                        style={{ marginLeft: "5px" }}
+                        onClick={() =>
+                          navigate(`/edit-bill/${bill._id}`)
+                        }
+                      >
+                        Edit
+                      </button>
+
+                      <button
+                        className="btn btn-delete"
+                        style={{ marginLeft: "5px" }}
+                        onClick={() => handleDelete(bill._id)}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
