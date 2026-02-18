@@ -13,3 +13,15 @@ export const createBill = async (data) => {
 
   return res.data;
 };
+
+export const getBills = async () => {
+  const token = localStorage.getItem("token");
+
+  const res = await axios.get(API, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return res.data;
+};
