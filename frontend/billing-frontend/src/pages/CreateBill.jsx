@@ -1,11 +1,15 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import { createBill } from "../services/billingService";
 
 function CreateBill() {
   const [bill, setBill] = useState({
     customerName: "",
     totalAmount: "",
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setBill({
@@ -14,10 +18,17 @@ function CreateBill() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Bill Data:", bill);
-    alert("Bill submitted (UI only)");
+
+    try {
+      await createBill(bill);
+      alert("Bill created successfully!");
+      navigate("/bills");
+    } catch (error) {
+      alert("Failed to create bill");
+      console.error(error);
+    }
   };
 
   return (
