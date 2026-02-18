@@ -35,49 +35,59 @@ function CreateBill() {
     <div>
       <Navbar />
 
-      <div style={{ padding: "30px" }}>
-        <h2>Create Bill</h2>
-
-        <form
-          onSubmit={handleSubmit}
+      <div className="page-container">
+        <div
+          className="card"
           style={{
-            maxWidth: "400px",
-            display: "flex",
-            flexDirection: "column",
-            gap: "15px",
+            maxWidth: "500px",
+            margin: "40px auto",
           }}
         >
-          <input
-            type="text"
-            name="customerName"
-            placeholder="Customer Name"
-            value={bill.customerName}
-            onChange={handleChange}
-            required
-          />
+          <h2>Create New Bill</h2>
 
-          <input
-            type="number"
-            name="totalAmount"
-            placeholder="Total Amount"
-            value={bill.totalAmount}
-            onChange={handleChange}
-            required
-          />
-
-          <button
-            type="submit"
+          <form
+            onSubmit={handleSubmit}
             style={{
-              padding: "10px",
-              background: "#4a90e2",
-              color: "white",
-              border: "none",
-              cursor: "pointer",
+              display: "flex",
+              flexDirection: "column",
+              gap: "15px",
             }}
           >
-            Save Bill
-          </button>
-        </form>
+            <div>
+              <label style={{ fontWeight: "bold" }}>
+                Customer Name
+              </label>
+              <input
+                type="text"
+                name="customerName"
+                placeholder="Enter customer name"
+                value={bill.customerName}
+                onChange={handleChange}
+                required
+                className="input"
+              />
+            </div>
+
+            <div>
+              <label style={{ fontWeight: "bold" }}>
+                Total Amount
+              </label>
+              <input
+                type="number"
+                name="totalAmount"
+                placeholder="Enter total amount"
+                value={bill.totalAmount}
+                onChange={handleChange}
+                required
+                className="input"
+              />
+            </div>
+
+            <button type="submit" className="btn btn-primary">
+              Save Bill
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
