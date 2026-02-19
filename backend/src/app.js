@@ -3,6 +3,7 @@ const express = require("express");
 const authRoutes = require("./routers/auth.routes");
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 const billingRoutes = require("./routers/billing.routes");
 =======
 
@@ -10,6 +11,8 @@ const billingRoutes = require("./routers/billing.routes");
 =======
 const billingRoutes = require("./routers/billing.routes");
 >>>>>>> 2b7c13c (file added)
+=======
+>>>>>>> 736e3cd (billing_controllers)
 
 const app = express();
 

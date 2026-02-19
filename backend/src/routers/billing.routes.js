@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 <<<<<<< HEAD
+<<<<<<< HEAD
 const Billing = require("../models/Billing");
 
 // Create bill
@@ -61,5 +62,29 @@ router.get("/:id", billingController.getBillById);
 router.put("/:id", billingController.updateBill);
 router.delete("/:id", billingController.deleteBill);
 >>>>>>> 649a4f5627c18cda61aed714307f2bc5c61773d4
+=======
+const {
+  createBill,
+  getAllBills,
+  getBillById,
+  updateBill,
+  deleteBill,
+} = require("../controllers/billing.controller");
+
+// Create a new bill
+router.post("/", createBill);
+
+// Get all bills
+router.get("/", getAllBills);
+
+// Get bill by ID
+router.get("/:id", getBillById);
+
+// Update bill
+router.put("/:id", updateBill);
+
+// Delete bill
+router.delete("/:id", deleteBill);
+>>>>>>> 736e3cd (billing_controllers)
 
 module.exports = router;
