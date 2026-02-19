@@ -58,3 +58,16 @@ exports.login = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+<<<<<<< HEAD
+=======
+
+// GET ME
+exports.getMe = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select("-password");
+    res.json(user);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+>>>>>>> 649a4f5627c18cda61aed714307f2bc5c61773d4
