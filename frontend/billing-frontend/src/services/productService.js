@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const API = "http://localhost:5000/api/billing";
+const API = "http://localhost:5000/api/products";
 
-export const createBill = async (data) => {
+export const createProduct = async (data) => {
   const token = localStorage.getItem("token");
 
   const res = await axios.post(API, data, {
@@ -14,7 +14,7 @@ export const createBill = async (data) => {
   return res.data;
 };
 
-export const getBills = async () => {
+export const getProducts = async () => {
   const token = localStorage.getItem("token");
 
   const res = await axios.get(API, {
@@ -24,10 +24,9 @@ export const getBills = async () => {
   });
 
   return res.data;
-
 };
 
-export const getBill = async (id) => {
+export const getProductById = async (id) => {
   const token = localStorage.getItem("token");
 
   const res = await axios.get(`${API}/${id}`, {
@@ -38,18 +37,8 @@ export const getBill = async (id) => {
 
   return res.data;
 };
-export const deleteBill = async (id) => {
-  const token = localStorage.getItem("token");
 
-  const res = await axios.delete(`${API}/${id}`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-
-  return res.data;
-};
-export const updateBill = async (id, data) => {
+export const updateProduct = async (id, data) => {
   const token = localStorage.getItem("token");
 
   const res = await axios.put(`${API}/${id}`, data, {
@@ -61,4 +50,14 @@ export const updateBill = async (id, data) => {
   return res.data;
 };
 
+export const deleteProduct = async (id) => {
+  const token = localStorage.getItem("token");
 
+  const res = await axios.delete(`${API}/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return res.data;
+};
