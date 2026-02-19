@@ -1,17 +1,5 @@
 const mongoose = require("mongoose");
 
-<<<<<<< HEAD
-const billingSchema = new mongoose.Schema({
-  customerName: {
-    type: String,
-    required: true,
-  },
-  totalAmount: {
-    type: Number,
-    required: true,
-  },
-});
-=======
 const billingSchema = new mongoose.Schema(
     {
         customerName: {
@@ -35,6 +23,5 @@ const billingSchema = new mongoose.Schema(
     },
     { timestamps: true }
 );
->>>>>>> 649a4f5627c18cda61aed714307f2bc5c61773d4
 
 module.exports = mongoose.model("Billing", billingSchema);
