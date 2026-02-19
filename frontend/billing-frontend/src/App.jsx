@@ -1,10 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// import AdminDashboard from "./pages/AdminDashboard";
-// import Products from "./pages/Products";
-// import Reports from "./pages/Reports";
-// import Settings from "./pages/Settings";
-
 import EditBill from "./pages/EditBill";
 import ViewBill from "./pages/ViewBill";
 import Login from "./pages/Login";
@@ -13,6 +8,14 @@ import Dashboard from "./pages/Dashboard"
 import CreateBill from "./pages/CreateBill";
 import Bills from "./pages/Bills";
 import ProtectedRoute from "./components/ProtectedRoute";
+
+// Admin Pages
+import AdminDashboard from "./pages/AdminDashboard";
+import Products from "./pages/Products";
+import CreateProduct from "./pages/CreateProduct";
+import EditProduct from "./pages/EditProduct";
+import Reports from "./pages/Reports";
+import Settings from "./pages/Settings";
 
 function App() {
   return (
@@ -40,24 +43,22 @@ function App() {
         />
 
         <Route
-  path="/edit-bill/:id"
-  element={
-    <ProtectedRoute>
-      <EditBill />
-    </ProtectedRoute>
-  }
-/>
+          path="/edit-bill/:id"
+          element={
+            <ProtectedRoute>
+              <EditBill />
+            </ProtectedRoute>
+          }
+        />
 
-<Route
-  path="/view-bill/:id"
-  element={
-    <ProtectedRoute>
-      <ViewBill />
-    </ProtectedRoute>
-  }
-/>
-
-
+        <Route
+          path="/view-bill/:id"
+          element={
+            <ProtectedRoute>
+              <ViewBill />
+            </ProtectedRoute>
+          }
+        />
 
         <Route
           path="/bills"
@@ -68,7 +69,7 @@ function App() {
           }
         />
 
-        {/* Admin Protected Routes
+        {/* Admin Protected Routes */}
         <Route
           path="/admin/dashboard"
           element={
@@ -77,6 +78,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+        
         <Route 
           path="/admin/products"
           element={
@@ -85,6 +87,25 @@ function App() {
             </ProtectedRoute>
           }
         />
+        
+        <Route 
+          path="/admin/create-product"
+          element={
+            <ProtectedRoute>
+              <CreateProduct />
+            </ProtectedRoute>
+          }
+        />
+        
+        <Route 
+          path="/admin/edit-product/:id"
+          element={
+            <ProtectedRoute>
+              <EditProduct />
+            </ProtectedRoute>
+          }
+        />
+        
         <Route 
           path="/admin/reports"
           element={
@@ -93,6 +114,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+        
         <Route
           path="/admin/settings"
           element={
@@ -100,7 +122,7 @@ function App() {
               <Settings />
             </ProtectedRoute>
           }
-        /> */}
+        />
       </Routes>
     </BrowserRouter>
   );
