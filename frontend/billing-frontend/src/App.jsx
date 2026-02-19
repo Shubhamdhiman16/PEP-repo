@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// import AdminDashboard from "./pages/AdminDashboard";
-// import Products from "./pages/Products";
-// import Reports from "./pages/Reports";
-// import Settings from "./pages/Settings";
+import AdminDashboard from "./pages/AdminDashboard";
+import Products from "./pages/Products";
+import Reports from "./pages/Reports";
+import Settings from "./pages/Settings";
 
 import EditBill from "./pages/EditBill";
 import ViewBill from "./pages/ViewBill";
@@ -40,22 +40,22 @@ function App() {
         />
 
         <Route
-  path="/edit-bill/:id"
-  element={
-    <ProtectedRoute>
-      <EditBill />
-    </ProtectedRoute>
-  }
-/>
+          path="/edit-bill/:id"
+          element={
+            <ProtectedRoute>
+              <EditBill />
+            </ProtectedRoute>
+          }
+        />
 
-<Route
-  path="/view-bill/:id"
-  element={
-    <ProtectedRoute>
-      <ViewBill />
-    </ProtectedRoute>
-  }
-/>
+        <Route
+          path="/view-bill/:id"
+          element={
+            <ProtectedRoute>
+              <ViewBill />
+            </ProtectedRoute>
+          }
+        />
 
 
 
@@ -68,7 +68,16 @@ function App() {
           }
         />
 
-        {/* Admin Protected Routes
+        <Route
+          path="/admin/products"
+          element={
+            <ProtectedRoute>
+              <Products />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Admin Protected Routes */}
         <Route
           path="/admin/dashboard"
           element={
@@ -77,15 +86,15 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route 
+        {/* <Route 
           path="/admin/products"
           element={
             <ProtectedRoute>
               <Products />
             </ProtectedRoute>
           }
-        />
-        <Route 
+        /> */}
+        <Route
           path="/admin/reports"
           element={
             <ProtectedRoute>
@@ -100,7 +109,7 @@ function App() {
               <Settings />
             </ProtectedRoute>
           }
-        /> */}
+        />
       </Routes>
     </BrowserRouter>
   );
