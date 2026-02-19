@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+<<<<<<< HEAD
 const Billing = require("../models/Billing");
 
 // Create bill
@@ -47,5 +48,18 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+=======
+const billingController = require("../controllers/billing.controller");
+const authMiddleware = require("../middleware/auth.middleware");
+
+// Protect all routes
+router.use(authMiddleware);
+
+router.post("/", billingController.createBill);
+router.get("/", billingController.getBills);
+router.get("/:id", billingController.getBillById);
+router.put("/:id", billingController.updateBill);
+router.delete("/:id", billingController.deleteBill);
+>>>>>>> 649a4f5627c18cda61aed714307f2bc5c61773d4
 
 module.exports = router;
