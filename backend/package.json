@@ -9,7 +9,10 @@
     "dev": "nodemon server.js"
   },
   "dependencies": {
+<<<<<<< HEAD
     "axios": "^1.13.5",
+=======
+>>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.6",
     "dotenv": "^16.6.1",

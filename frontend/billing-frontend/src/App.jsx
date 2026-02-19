@@ -1,10 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+<<<<<<< HEAD
 // import AdminDashboard from "./pages/AdminDashboard";
 // import Products from "./pages/Products";
 // import Reports from "./pages/Reports";
 // import Settings from "./pages/Settings";
 
+=======
+>>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
 import EditBill from "./pages/EditBill";
 import ViewBill from "./pages/ViewBill";
 import Login from "./pages/Login";
@@ -14,6 +17,17 @@ import CreateBill from "./pages/CreateBill";
 import Bills from "./pages/Bills";
 import ProtectedRoute from "./components/ProtectedRoute";
 
+<<<<<<< HEAD
+=======
+// Admin Pages
+import AdminDashboard from "./pages/AdminDashboard";
+import Products from "./pages/Products";
+import CreateProduct from "./pages/CreateProduct";
+import EditProduct from "./pages/EditProduct";
+import Reports from "./pages/Reports";
+import Settings from "./pages/Settings";
+
+>>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
 function App() {
   return (
     <BrowserRouter>
@@ -40,6 +54,7 @@ function App() {
         />
 
         <Route
+<<<<<<< HEAD
   path="/edit-bill/:id"
   element={
     <ProtectedRoute>
@@ -58,6 +73,24 @@ function App() {
 />
 
 
+=======
+          path="/edit-bill/:id"
+          element={
+            <ProtectedRoute>
+              <EditBill />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/view-bill/:id"
+          element={
+            <ProtectedRoute>
+              <ViewBill />
+            </ProtectedRoute>
+          }
+        />
+>>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
 
         <Route
           path="/bills"
@@ -68,7 +101,11 @@ function App() {
           }
         />
 
+<<<<<<< HEAD
         {/* Admin Protected Routes
+=======
+        {/* Admin Protected Routes */}
+>>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
         <Route
           path="/admin/dashboard"
           element={
@@ -77,6 +114,10 @@ function App() {
             </ProtectedRoute>
           }
         />
+<<<<<<< HEAD
+=======
+        
+>>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
         <Route 
           path="/admin/products"
           element={
@@ -85,6 +126,28 @@ function App() {
             </ProtectedRoute>
           }
         />
+<<<<<<< HEAD
+=======
+        
+        <Route 
+          path="/admin/create-product"
+          element={
+            <ProtectedRoute>
+              <CreateProduct />
+            </ProtectedRoute>
+          }
+        />
+        
+        <Route 
+          path="/admin/edit-product/:id"
+          element={
+            <ProtectedRoute>
+              <EditProduct />
+            </ProtectedRoute>
+          }
+        />
+        
+>>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
         <Route 
           path="/admin/reports"
           element={
@@ -93,6 +156,10 @@ function App() {
             </ProtectedRoute>
           }
         />
+<<<<<<< HEAD
+=======
+        
+>>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
         <Route
           path="/admin/settings"
           element={
@@ -100,7 +167,11 @@ function App() {
               <Settings />
             </ProtectedRoute>
           }
+<<<<<<< HEAD
         /> */}
+=======
+        />
+>>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
       </Routes>
     </BrowserRouter>
   );
