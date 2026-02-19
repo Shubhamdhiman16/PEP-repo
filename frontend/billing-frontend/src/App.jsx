@@ -1,10 +1,20 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+<<<<<<< HEAD
 import AdminDashboard from "./pages/AdminDashboard";
 import Products from "./pages/Products";
 import Reports from "./pages/Reports";
 import Settings from "./pages/Settings";
+=======
+<<<<<<< HEAD
+// import AdminDashboard from "./pages/AdminDashboard";
+// import Products from "./pages/Products";
+// import Reports from "./pages/Reports";
+// import Settings from "./pages/Settings";
+>>>>>>> be81d74981367e8fa3244dce181999b810509a0a
 
+=======
+>>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
 import EditBill from "./pages/EditBill";
 import ViewBill from "./pages/ViewBill";
 import Login from "./pages/Login";
@@ -14,6 +24,17 @@ import CreateBill from "./pages/CreateBill";
 import Bills from "./pages/Bills";
 import ProtectedRoute from "./components/ProtectedRoute";
 
+<<<<<<< HEAD
+=======
+// Admin Pages
+import AdminDashboard from "./pages/AdminDashboard";
+import Products from "./pages/Products";
+import CreateProduct from "./pages/CreateProduct";
+import EditProduct from "./pages/EditProduct";
+import Reports from "./pages/Reports";
+import Settings from "./pages/Settings";
+
+>>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
 function App() {
   return (
     <BrowserRouter>
@@ -40,6 +61,36 @@ function App() {
         />
 
         <Route
+<<<<<<< HEAD
+          path="/edit-bill/:id"
+          element={
+            <ProtectedRoute>
+              <EditBill />
+            </ProtectedRoute>
+          }
+        />
+=======
+<<<<<<< HEAD
+  path="/edit-bill/:id"
+  element={
+    <ProtectedRoute>
+      <EditBill />
+    </ProtectedRoute>
+  }
+/>
+>>>>>>> be81d74981367e8fa3244dce181999b810509a0a
+
+        <Route
+          path="/view-bill/:id"
+          element={
+            <ProtectedRoute>
+              <ViewBill />
+            </ProtectedRoute>
+          }
+        />
+
+
+=======
           path="/edit-bill/:id"
           element={
             <ProtectedRoute>
@@ -56,8 +107,7 @@ function App() {
             </ProtectedRoute>
           }
         />
-
-
+>>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
 
         <Route
           path="/bills"
@@ -68,6 +118,7 @@ function App() {
           }
         />
 
+<<<<<<< HEAD
         <Route
           path="/admin/products"
           element={
@@ -78,6 +129,13 @@ function App() {
         />
 
         {/* Admin Protected Routes */}
+=======
+<<<<<<< HEAD
+        {/* Admin Protected Routes
+=======
+        {/* Admin Protected Routes */}
+>>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
+>>>>>>> be81d74981367e8fa3244dce181999b810509a0a
         <Route
           path="/admin/dashboard"
           element={
@@ -86,15 +144,50 @@ function App() {
             </ProtectedRoute>
           }
         />
+<<<<<<< HEAD
         {/* <Route 
+=======
+<<<<<<< HEAD
+=======
+        
+>>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
+        <Route 
+>>>>>>> be81d74981367e8fa3244dce181999b810509a0a
           path="/admin/products"
           element={
             <ProtectedRoute>
               <Products />
             </ProtectedRoute>
           }
+<<<<<<< HEAD
         /> */}
         <Route
+=======
+        />
+<<<<<<< HEAD
+=======
+        
+        <Route 
+          path="/admin/create-product"
+          element={
+            <ProtectedRoute>
+              <CreateProduct />
+            </ProtectedRoute>
+          }
+        />
+        
+        <Route 
+          path="/admin/edit-product/:id"
+          element={
+            <ProtectedRoute>
+              <EditProduct />
+            </ProtectedRoute>
+          }
+        />
+        
+>>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
+        <Route 
+>>>>>>> be81d74981367e8fa3244dce181999b810509a0a
           path="/admin/reports"
           element={
             <ProtectedRoute>
@@ -102,6 +195,10 @@ function App() {
             </ProtectedRoute>
           }
         />
+<<<<<<< HEAD
+=======
+        
+>>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
         <Route
           path="/admin/settings"
           element={
@@ -109,7 +206,15 @@ function App() {
               <Settings />
             </ProtectedRoute>
           }
+<<<<<<< HEAD
         />
+=======
+<<<<<<< HEAD
+        /> */}
+=======
+        />
+>>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
+>>>>>>> be81d74981367e8fa3244dce181999b810509a0a
       </Routes>
     </BrowserRouter>
   );
