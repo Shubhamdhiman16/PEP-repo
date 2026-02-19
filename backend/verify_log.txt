@@ -1,0 +1,9 @@
+--- STARTING VERIFICATION ---
+--- STARTING VERIFICATION ---
+1. Logging in as Admin...
+
+!!! VERIFICATION FAILED !!!
+TypeError: fetch failed
+    at node:internal/deps/undici/undici:13510:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async verify (D:\PEP-repo\backend\scripts\verify_api.js:20:26)
