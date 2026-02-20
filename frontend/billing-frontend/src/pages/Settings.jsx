@@ -1,20 +1,3 @@
-<<<<<<< HEAD
-
-import Navbar from "../components/Navbar";
-
-function Settings() {
-    return (
-        <div>
-            <Navbar />
-            <div className="page-container">
-                <div className="card">
-                    <h2>System Settings</h2>
-                    <p>Settings module coming soon...</p>
-                </div>
-            </div>
-        </div>
-    );
-=======
 import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 
@@ -304,7 +287,6 @@ function Settings() {
       `}</style>
     </div>
   );
->>>>>>> be81d74981367e8fa3244dce181999b810509a0a
 }
 
 export default Settings;

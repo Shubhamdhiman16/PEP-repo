@@ -1,13 +1,4 @@
 import { useEffect, useState } from "react";
-<<<<<<< HEAD
-import { useParams } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import { getBills } from "../services/billingService";
-
-function ViewBill() {
-  const { id } = useParams();
-  const [bill, setBill] = useState(null);
-=======
 import { useParams, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { getBill } from "../services/billingService";
@@ -17,18 +8,10 @@ function ViewBill() {
   const navigate = useNavigate();
   const [bill, setBill] = useState(null);
   const [loading, setLoading] = useState(true);
->>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
 
   useEffect(() => {
     const fetchBill = async () => {
       try {
-<<<<<<< HEAD
-        const bills = await getBills();
-        const currentBill = bills.find((b) => b._id === id);
-        setBill(currentBill);
-      } catch (error) {
-        console.error("Error fetching bill", error);
-=======
         const data = await getBill(id);
         setBill(data);
       } catch (error) {
@@ -37,14 +20,10 @@ function ViewBill() {
         navigate("/bills");
       } finally {
         setLoading(false);
->>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
       }
     };
 
     fetchBill();
-<<<<<<< HEAD
-  }, [id]);
-=======
   }, [id, navigate]);
 
   const formatDate = (dateString) => {
@@ -95,15 +74,11 @@ function ViewBill() {
       </div>
     );
   }
->>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
 
   if (!bill) {
     return (
       <div>
         <Navbar />
-<<<<<<< HEAD
-        <div style={{ padding: "30px" }}>Loading bill...</div>
-=======
         <div className="page-container">
           <div className="empty-state">
             <h3>Bill not found</h3>
@@ -112,7 +87,6 @@ function ViewBill() {
             </button>
           </div>
         </div>
->>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
       </div>
     );
   }
@@ -121,36 +95,6 @@ function ViewBill() {
     <div>
       <Navbar />
 
-<<<<<<< HEAD
-      <div
-        style={{
-          padding: "30px",
-          maxWidth: "600px",
-          margin: "40px auto",
-          border: "1px solid #ddd",
-          borderRadius: "8px",
-          background: "#fff",
-        }}
-      >
-        <h2 style={{ textAlign: "center" }}>Invoice</h2>
-
-        <hr />
-
-        <p>
-          <strong>Customer Name:</strong> {bill.customerName}
-        </p>
-
-        <p>
-          <strong>Total Amount:</strong> ₹{bill.totalAmount}
-        </p>
-
-        <hr />
-
-        <p style={{ textAlign: "center", marginTop: "20px" }}>
-          Thank you for your business!
-        </p>
-      </div>
-=======
       <div className="page-container">
         {/* Page Header */}
         <div className="page-header no-print">
@@ -348,7 +292,7 @@ function ViewBill() {
         }
 
         .bill-id-display,
-        .bill-date-display,
+         .bill-date-display,
         .bill-status-display {
           display: flex;
           justify-content: flex-end;
@@ -512,7 +456,6 @@ function ViewBill() {
           }
         }
       `}</style>
->>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
     </div>
   );
 }

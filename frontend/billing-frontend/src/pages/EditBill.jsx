@@ -1,45 +1,12 @@
 import { useEffect, useState } from "react";
-<<<<<<< HEAD
-import { useNavigate, useParams } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import { getBills, updateBill } from "../services/billingService";
-=======
 import { useParams, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { getBill, updateBill } from "../services/billingService";
 import { getProducts } from "../services/productService";
->>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
 
 function EditBill() {
   const { id } = useParams();
   const navigate = useNavigate();
-<<<<<<< HEAD
-
-  const [bill, setBill] = useState({
-    customerName: "",
-    totalAmount: "",
-  });
-
-  useEffect(() => {
-    const fetchBill = async () => {
-      try {
-        const bills = await getBills();
-        const currentBill = bills.find((b) => b._id === id);
-        if (currentBill) setBill(currentBill);
-      } catch (error) {
-        console.error("Error fetching bill", error);
-      }
-    };
-
-    fetchBill();
-  }, [id]);
-
-  const handleChange = (e) => {
-    setBill({
-      ...bill,
-      [e.target.name]: e.target.value,
-    });
-=======
   const [bill, setBill] = useState({
     customerName: "",
     customerEmail: "",
@@ -61,18 +28,18 @@ function EditBill() {
           getBill(id),
           getProducts()
         ]);
-        
+
         setBill({
           customerName: billData.customerName || "",
           customerEmail: billData.customerEmail || "",
           customerPhone: billData.customerPhone || "",
           status: billData.status || "pending",
         });
-        
+
         if (billData.items && billData.items.length > 0) {
           setItems(billData.items);
         }
-        
+
         setProducts(productsData);
       } catch (error) {
         console.error("Error fetching bill", error);
@@ -104,7 +71,7 @@ function EditBill() {
   const handleItemChange = (index, e) => {
     const { name, value } = e.target;
     const newItems = [...items];
-    
+
     if (name === "productId") {
       const selectedProduct = products.find(p => p._id === value);
       if (selectedProduct) {
@@ -137,7 +104,7 @@ function EditBill() {
         total: parseFloat(value) || 0
       };
     }
-    
+
     setItems(newItems);
   };
 
@@ -157,40 +124,27 @@ function EditBill() {
 
   const validateForm = () => {
     const newErrors = {};
-    
+
     if (!bill.customerName.trim()) {
       newErrors.customerName = "Customer name is required";
     }
-    
+
     const validItems = items.filter(item => item.productName && item.quantity > 0);
     if (validItems.length === 0) {
       newErrors.items = "At least one item is required";
     }
-    
+
     if (calculateTotal() <= 0) {
       newErrors.total = "Total amount must be greater than 0";
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
->>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-<<<<<<< HEAD
 
-    try {
-      await updateBill(id, bill);
-      alert("Bill updated successfully");
-      navigate("/bills");
-    } catch (error) {
-      alert("Failed to update bill");
-    }
-  };
-
-=======
-    
     if (!validateForm()) {
       return;
     }
@@ -199,13 +153,13 @@ function EditBill() {
 
     try {
       const validItems = items.filter(item => item.productName && item.quantity > 0);
-      
+
       const billData = {
         ...bill,
         items: validItems,
         totalAmount: calculateTotal()
       };
-      
+
       await updateBill(id, billData);
       alert("Bill updated successfully!");
       navigate("/bills");
@@ -240,57 +194,10 @@ function EditBill() {
     );
   }
 
->>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
   return (
     <div>
       <Navbar />
 
-<<<<<<< HEAD
-      <div style={{ padding: "30px" }}>
-        <h2>Edit Bill</h2>
-
-        <form
-          onSubmit={handleSubmit}
-          style={{
-            maxWidth: "400px",
-            display: "flex",
-            flexDirection: "column",
-            gap: "15px",
-          }}
-        >
-          <input
-            type="text"
-            name="customerName"
-            placeholder="Customer Name"
-            value={bill.customerName}
-            onChange={handleChange}
-            required
-          />
-
-          <input
-            type="number"
-            name="totalAmount"
-            placeholder="Total Amount"
-            value={bill.totalAmount}
-            onChange={handleChange}
-            required
-          />
-
-          <button
-            type="submit"
-            style={{
-              padding: "10px",
-              background: "#4a90e2",
-              color: "white",
-              border: "none",
-              cursor: "pointer",
-            }}
-          >
-            Update Bill
-          </button>
-        </form>
-      </div>
-=======
       <div className="page-container">
         {/* Page Header */}
         <div className="page-header">
@@ -391,7 +298,7 @@ function EditBill() {
               </div>
               <div className="card-body">
                 {errors.items && <div className="alert alert-danger">{errors.items}</div>}
-                
+
                 <div className="items-table">
                   <div className="items-header">
                     <span>Product</span>
@@ -400,7 +307,7 @@ function EditBill() {
                     <span>Total</span>
                     <span></span>
                   </div>
-                  
+
                   {items.map((item, index) => (
                     <div key={index} className="item-row">
                       <div className="item-field">
@@ -646,7 +553,6 @@ function EditBill() {
           }
         }
       `}</style>
->>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
     </div>
   );
 }

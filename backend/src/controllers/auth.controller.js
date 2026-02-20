@@ -7,6 +7,10 @@ exports.register = async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
+    if (!name || !email || !password) {
+      return res.status(400).json({ message: "Name, email and password are required" });
+    }
+
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: "User already exists" });
@@ -25,7 +29,7 @@ exports.register = async (req, res) => {
       userId: user._id,
     });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).json({ message: err.message });
   }
 };
 
@@ -53,9 +57,15 @@ exports.login = async (req, res) => {
     res.json({
       message: "Login successful",
       token,
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+      },
     });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).json({ message: err.message });
   }
 };
 
@@ -65,6 +75,6 @@ exports.getMe = async (req, res) => {
     const user = await User.findById(req.user.id).select("-password");
     res.json(user);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).json({ message: err.message });
   }
 };
