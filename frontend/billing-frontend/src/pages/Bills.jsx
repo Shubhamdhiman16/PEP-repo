@@ -5,35 +5,25 @@ import { getBills, deleteBill } from "../services/billingService";
 
 function Bills() {
   const [bills, setBills] = useState([]);
-<<<<<<< HEAD
-=======
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
-  
->>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
+
   const navigate = useNavigate();
 
   const fetchBills = async () => {
     try {
-<<<<<<< HEAD
-      const data = await getBills();
-      setBills(data);
-    } catch (error) {
-      console.error("Error fetching bills", error);
-=======
       setLoading(true);
       const data = await getBills();
       // Sort by date descending (newest first)
-      const sortedBills = data.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt));
+      const sortedBills = data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
       setBills(sortedBills);
     } catch (error) {
       console.error("Error fetching bills", error);
     } finally {
       setLoading(false);
->>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
     }
   };
 
@@ -41,36 +31,23 @@ function Bills() {
     fetchBills();
   }, []);
 
-<<<<<<< HEAD
-  const handleDelete = async (id) => {
-    try {
-      await deleteBill(id);
-      alert("Bill deleted successfully");
-      fetchBills();
-    } catch (error) {
-      alert("Failed to delete bill");
-      console.error(error);
-    }
-  };
+  // Filter bills based on search term and status filter
+  const filteredBills = bills.filter((bill) => {
+    const matchesSearch =
+      bill.customerName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      bill.customerEmail?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      bill._id?.toLowerCase().includes(searchTerm.toLowerCase());
 
-=======
-   // Filter bills based on search term and status filter
-   const filteredBills = bills.filter((bill) => {
-     const matchesSearch =
-       bill.customerName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-       bill.customerEmail?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-       bill._id?.toLowerCase().includes(searchTerm.toLowerCase());
-     
-     if (statusFilter === "all") return matchesSearch;
-     return matchesSearch && bill.status === statusFilter;
-   });
+    if (statusFilter === "all") return matchesSearch;
+    return matchesSearch && bill.status === statusFilter;
+  });
 
-   // Pagination
-   const totalPages = Math.ceil(filteredBills.length / itemsPerPage);
-   const paginatedBills = filteredBills.slice(
-     (currentPage - 1) * itemsPerPage,
-     currentPage * itemsPerPage
-   );
+  // Pagination
+  const totalPages = Math.ceil(filteredBills.length / itemsPerPage);
+  const paginatedBills = filteredBills.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
 
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this bill?")) {
@@ -126,73 +103,11 @@ function Bills() {
     );
   }
 
->>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
   return (
     <div>
       <Navbar />
 
       <div className="page-container">
-<<<<<<< HEAD
-        <div className="card">
-          <h2>All Bills</h2>
-
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Customer Name</th>
-                <th>Total Amount</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {bills.length === 0 ? (
-                <tr>
-                  <td colSpan="3" style={{ textAlign: "center" }}>
-                    No bills found
-                  </td>
-                </tr>
-              ) : (
-                bills.map((bill) => (
-                  <tr key={bill._id}>
-                    <td>{bill.customerName}</td>
-                    <td>₹{bill.totalAmount}</td>
-                    <td>
-                      <button
-                        className="btn btn-view"
-                        onClick={() =>
-                          navigate(`/view-bill/${bill._id}`)
-                        }
-                      >
-                        View
-                      </button>
-
-                      <button
-                        className="btn btn-edit"
-                        style={{ marginLeft: "5px" }}
-                        onClick={() =>
-                          navigate(`/edit-bill/${bill._id}`)
-                        }
-                      >
-                        Edit
-                      </button>
-
-                      <button
-                        className="btn btn-delete"
-                        style={{ marginLeft: "5px" }}
-                        onClick={() => handleDelete(bill._id)}
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))
-              )}
-            </tbody>
-          </table>
-        </div>
-      </div>
-=======
         {/* Page Header */}
         <div className="page-header">
           <div className="page-header-content">
@@ -231,7 +146,7 @@ function Bills() {
               />
             </div>
             <div className="filter-group">
-              <button 
+              <button
                 className={`filter-btn ${statusFilter === "all" ? "active" : ""}`}
                 onClick={() => {
                   setStatusFilter("all");
@@ -240,7 +155,7 @@ function Bills() {
               >
                 All
               </button>
-              <button 
+              <button
                 className={`filter-btn ${statusFilter === "paid" ? "active" : ""}`}
                 onClick={() => {
                   setStatusFilter("paid");
@@ -249,7 +164,7 @@ function Bills() {
               >
                 Paid
               </button>
-              <button 
+              <button
                 className={`filter-btn ${statusFilter === "pending" ? "active" : ""}`}
                 onClick={() => {
                   setStatusFilter("pending");
@@ -258,7 +173,7 @@ function Bills() {
               >
                 Pending
               </button>
-              <button 
+              <button
                 className={`filter-btn ${statusFilter === "cancelled" ? "active" : ""}`}
                 onClick={() => {
                   setStatusFilter("cancelled");
@@ -279,8 +194,8 @@ function Bills() {
                 <div className="empty-state-icon">📄</div>
                 <h3 className="empty-state-title">No bills found</h3>
                 <p className="empty-state-description">
-                  {searchTerm || statusFilter !== "all" 
-                    ? "Try adjusting your search or filter criteria" 
+                  {searchTerm || statusFilter !== "all"
+                    ? "Try adjusting your search or filter criteria"
                     : "Create your first bill to get started"}
                 </p>
                 {!searchTerm && statusFilter === "all" && (
@@ -380,7 +295,7 @@ function Bills() {
                   <polyline points="15 18 9 12 15 6"></polyline>
                 </svg>
               </button>
-              
+
               {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                 <button
                   key={page}
@@ -390,7 +305,7 @@ function Bills() {
                   {page}
                 </button>
               ))}
-              
+
               <button
                 className="pagination-btn"
                 onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
@@ -475,7 +390,6 @@ function Bills() {
           }
         }
       `}</style>
->>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
     </div>
   );
 }
