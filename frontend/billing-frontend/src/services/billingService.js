@@ -24,10 +24,7 @@ export const getBills = async () => {
   });
 
   return res.data;
-
 };
-<<<<<<< HEAD
-=======
 
 export const getBill = async (id) => {
   const token = localStorage.getItem("token");
@@ -40,7 +37,7 @@ export const getBill = async (id) => {
 
   return res.data;
 };
->>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
+
 export const deleteBill = async (id) => {
   const token = localStorage.getItem("token");
 
@@ -52,6 +49,7 @@ export const deleteBill = async (id) => {
 
   return res.data;
 };
+
 export const updateBill = async (id, data) => {
   const token = localStorage.getItem("token");
 
@@ -63,5 +61,3 @@ export const updateBill = async (id, data) => {
 
   return res.data;
 };
-
-
