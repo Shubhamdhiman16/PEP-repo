@@ -1,10 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../services/authService";
-<<<<<<< HEAD
-import "./Register.css";
-=======
->>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
+import "./Login.css"; // Reusing login styles for consistency
 
 function Register() {
   const [form, setForm] = useState({
@@ -12,11 +9,8 @@ function Register() {
     email: "",
     password: "",
   });
-<<<<<<< HEAD
-=======
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
->>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
 
   const navigate = useNavigate();
 
@@ -25,34 +19,22 @@ function Register() {
       ...form,
       [e.target.name]: e.target.value,
     });
-<<<<<<< HEAD
-=======
     setError("");
->>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-<<<<<<< HEAD
 
-    try {
-      await registerUser(form);
-      alert("Registration successful!");
-      navigate("/");
-    } catch (error) {
-      alert("Registration failed");
-=======
-    
     if (!form.name.trim()) {
       setError("Please enter your name");
       return;
     }
-    
+
     if (form.password.length < 6) {
       setError("Password must be at least 6 characters");
       return;
     }
-    
+
     setLoading(true);
     setError("");
 
@@ -64,54 +46,10 @@ function Register() {
       setError(error.response?.data?.message || "Registration failed. Please try again.");
     } finally {
       setLoading(false);
->>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
     }
   };
 
   return (
-<<<<<<< HEAD
-    <div className="register-wrapper">
-      <div className="register-left">
-        <h1>Join Billing System</h1>
-        <p>Create your account to manage invoices easily.</p>
-      </div>
-
-      <div className="register-right">
-        <form className="register-card" onSubmit={handleSubmit}>
-          <h2>Create Account</h2>
-
-          <input
-            type="text"
-            name="name"
-            placeholder="Full Name"
-            value={form.name}
-            onChange={handleChange}
-            required
-          />
-
-          <input
-            type="email"
-            name="email"
-            placeholder="Email address"
-            value={form.email}
-            onChange={handleChange}
-            required
-          />
-
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={form.password}
-            onChange={handleChange}
-            required
-          />
-
-          <button type="submit">Register</button>
-
-          <p className="login-text">
-            Already have an account? <Link to="/">Login</Link>
-=======
     <div className="login-wrapper">
       <div className="login-left">
         <div className="login-brand">
@@ -222,7 +160,6 @@ function Register() {
 
           <p className="register-text">
             Already have an account? <Link to="/">Sign in</Link>
->>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
           </p>
         </form>
       </div>

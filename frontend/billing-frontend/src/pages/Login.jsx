@@ -8,11 +8,8 @@ function Login() {
     email: "",
     password: "",
   });
-<<<<<<< HEAD
-=======
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
->>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
 
   const navigate = useNavigate();
 
@@ -21,28 +18,17 @@ function Login() {
       ...form,
       [e.target.name]: e.target.value,
     });
-<<<<<<< HEAD
-=======
     setError("");
->>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-<<<<<<< HEAD
-=======
     setLoading(true);
     setError("");
->>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
 
     try {
       const data = await loginUser(form);
       localStorage.setItem("token", data.token);
-<<<<<<< HEAD
-      navigate("/dashboard");
-    } catch (error) {
-      alert("Invalid login credentials");
-=======
       if (data.user) {
         localStorage.setItem("user", JSON.stringify(data.user));
       }
@@ -51,17 +37,12 @@ function Login() {
       setError("Invalid email or password. Please try again.");
     } finally {
       setLoading(false);
->>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
     }
   };
 
   return (
     <div className="login-wrapper">
       <div className="login-left">
-<<<<<<< HEAD
-        <h1>Billing System</h1>
-        <p>Manage your invoices efficiently.</p>
-=======
         <div className="login-brand">
           <div className="brand-icon-large">
             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -75,7 +56,7 @@ function Login() {
           <h1>Billing System</h1>
           <p>Manage your invoices efficiently with our powerful billing solution.</p>
         </div>
-        
+
         <div className="login-features">
           <div className="feature-item">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -96,37 +77,10 @@ function Login() {
             <span>Detailed Reports</span>
           </div>
         </div>
->>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
       </div>
 
       <div className="login-right">
         <form className="login-card" onSubmit={handleSubmit}>
-<<<<<<< HEAD
-          <h2>Welcome Back</h2>
-
-          <input
-            type="email"
-            name="email"
-            placeholder="Email address"
-            value={form.email}
-            onChange={handleChange}
-            required
-          />
-
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={form.password}
-            onChange={handleChange}
-            required
-          />
-
-          <button type="submit">Login</button>
-
-          <p className="register-text">
-            Don’t have an account? <Link to="/register">Sign up</Link>
-=======
           <div className="login-header">
             <h2>Welcome Back</h2>
             <p>Sign in to continue to your account</p>
@@ -200,7 +154,6 @@ function Login() {
 
           <p className="register-text">
             Don't have an account? <Link to="/register">Create one</Link>
->>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
           </p>
         </form>
       </div>
