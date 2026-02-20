@@ -1,31 +1,12 @@
-<<<<<<< HEAD
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import { createBill } from "../services/billingService";
-=======
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { createBill } from "../services/billingService";
 import { getProducts } from "../services/productService";
->>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
 
 function CreateBill() {
   const [bill, setBill] = useState({
     customerName: "",
-<<<<<<< HEAD
-    totalAmount: "",
-  });
-
-  const navigate = useNavigate();
-
-  const handleChange = (e) => {
-    setBill({
-      ...bill,
-      [e.target.name]: e.target.value,
-    });
-=======
     customerEmail: "",
     customerPhone: "",
     status: "pending",
@@ -69,7 +50,7 @@ function CreateBill() {
   const handleItemChange = (index, e) => {
     const { name, value } = e.target;
     const newItems = [...items];
-    
+
     if (name === "productId") {
       const selectedProduct = products.find(p => p._id === value);
       if (selectedProduct) {
@@ -102,7 +83,7 @@ function CreateBill() {
         total: parseFloat(value) || 0
       };
     }
-    
+
     setItems(newItems);
   };
 
@@ -122,41 +103,27 @@ function CreateBill() {
 
   const validateForm = () => {
     const newErrors = {};
-    
+
     if (!bill.customerName.trim()) {
       newErrors.customerName = "Customer name is required";
     }
-    
+
     const validItems = items.filter(item => item.productName && item.quantity > 0);
     if (validItems.length === 0) {
       newErrors.items = "At least one item is required";
     }
-    
+
     if (calculateTotal() <= 0) {
       newErrors.total = "Total amount must be greater than 0";
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
->>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-<<<<<<< HEAD
 
-    try {
-      await createBill(bill);
-      alert("Bill created successfully!");
-      navigate("/bills");
-    } catch (error) {
-      alert("Failed to create bill");
-      console.error(error);
-    }
-  };
-
-=======
-    
     if (!validateForm()) {
       return;
     }
@@ -166,13 +133,13 @@ function CreateBill() {
     try {
       // Filter out empty items
       const validItems = items.filter(item => item.productName && item.quantity > 0);
-      
+
       const billData = {
         ...bill,
         items: validItems,
         totalAmount: calculateTotal()
       };
-      
+
       await createBill(billData);
       alert("Bill created successfully!");
       navigate("/bills");
@@ -193,67 +160,11 @@ function CreateBill() {
     }).format(amount);
   };
 
->>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
   return (
     <div>
       <Navbar />
 
       <div className="page-container">
-<<<<<<< HEAD
-        <div
-          className="card"
-          style={{
-            maxWidth: "500px",
-            margin: "40px auto",
-          }}
-        >
-          <h2>Create New Bill</h2>
-
-          <form
-            onSubmit={handleSubmit}
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "15px",
-            }}
-          >
-            <div>
-              <label style={{ fontWeight: "bold" }}>
-                Customer Name
-              </label>
-              <input
-                type="text"
-                name="customerName"
-                placeholder="Enter customer name"
-                value={bill.customerName}
-                onChange={handleChange}
-                required
-                className="input"
-              />
-            </div>
-
-            <div>
-              <label style={{ fontWeight: "bold" }}>
-                Total Amount
-              </label>
-              <input
-                type="number"
-                name="totalAmount"
-                placeholder="Enter total amount"
-                value={bill.totalAmount}
-                onChange={handleChange}
-                required
-                className="input"
-              />
-            </div>
-
-            <button type="submit" className="btn btn-primary">
-              Save Bill
-            </button>
-          </form>
-        </div>
-      </div>
-=======
         {/* Page Header */}
         <div className="page-header">
           <div className="page-header-content">
@@ -353,7 +264,7 @@ function CreateBill() {
               </div>
               <div className="card-body">
                 {errors.items && <div className="alert alert-danger">{errors.items}</div>}
-                
+
                 <div className="items-table">
                   <div className="items-header">
                     <span>Product</span>
@@ -362,7 +273,7 @@ function CreateBill() {
                     <span>Total</span>
                     <span></span>
                   </div>
-                  
+
                   {items.map((item, index) => (
                     <div key={index} className="item-row">
                       <div className="item-field">
@@ -608,7 +519,6 @@ function CreateBill() {
           }
         }
       `}</style>
->>>>>>> f16144836b4f09645e574b4c3c43499b4a15368a
     </div>
   );
 }
