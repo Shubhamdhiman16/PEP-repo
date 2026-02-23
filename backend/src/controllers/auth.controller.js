@@ -58,11 +58,6 @@ exports.login = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 2b7c13c (file added)
 
 // GET ME
 exports.getMe = async (req, res) => {
@@ -73,7 +68,3 @@ exports.getMe = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
-<<<<<<< HEAD
->>>>>>> 649a4f5627c18cda61aed714307f2bc5c61773d4
-=======
->>>>>>> 2b7c13c (file added)
