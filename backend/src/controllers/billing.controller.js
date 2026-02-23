@@ -4,7 +4,7 @@ const Billing = require("../models/Billing");
 // Create a new bill
 exports.createBill = async (req, res) => {
     try {
-        const { customerName, totalAmount } = req.body;
+        const { customerName, totalAmount, items, status } = req.body;
 
         if (!customerName || !totalAmount) {
             return res.status(400).json({ message: "Customer Name and Amount are required" });
@@ -13,6 +13,8 @@ exports.createBill = async (req, res) => {
         const bill = await Billing.create({
             customerName,
             totalAmount,
+            items: items || [],
+            status: status || "paid",
             createdBy: req.user.id, // From authMiddleware
         });
 
@@ -48,11 +50,11 @@ exports.getBillById = async (req, res) => {
 // Update a bill
 exports.updateBill = async (req, res) => {
     try {
-        const { customerName, totalAmount } = req.body;
+        const { customerName, totalAmount, items, status } = req.body;
 
         const bill = await Billing.findByIdAndUpdate(
             req.params.id,
-            { customerName, totalAmount },
+            { customerName, totalAmount, items, status },
             { new: true }
         );
 

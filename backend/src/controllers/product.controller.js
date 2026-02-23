@@ -4,7 +4,7 @@ const Product = require("../models/Product");
 exports.createProduct = async (req, res) => {
 <<<<<<< HEAD
     try {
-        const { name, price, stock, description } = req.body;
+        const { name, price, stock, description, category } = req.body;
 
         if (!name || !price) {
             return res.status(400).json({ message: "Name and Price are required" });
@@ -15,6 +15,7 @@ exports.createProduct = async (req, res) => {
             price,
             stock,
             description,
+            category
         });
 
         res.status(201).json(product);
@@ -49,11 +50,11 @@ exports.getProductById = async (req, res) => {
 // Update a product
 exports.updateProduct = async (req, res) => {
     try {
-        const { name, price, stock, description } = req.body;
+        const { name, price, stock, description, category } = req.body;
 
         const product = await Product.findByIdAndUpdate(
             req.params.id,
-            { name, price, stock, description },
+            { name, price, stock, description, category, updatedAt: Date.now() },
             { new: true }
         );
 
