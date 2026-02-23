@@ -16,6 +16,9 @@ import CreateProduct from "./pages/CreateProduct";
 import EditProduct from "./pages/EditProduct";
 import Reports from "./pages/Reports";
 import Settings from "./pages/Settings";
+import AIDashboard from "./pages/AIDashboard";
+import InvoiceScanner from "./pages/InvoiceScanner";
+import AdminLayout from "./layouts/AdminLayout";
 
 function App() {
   return (
@@ -69,12 +72,25 @@ function App() {
           }
         />
 
-        {/* Admin Protected Routes */}
+        {/* Admin Protected Routes with Layout */}
         <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <AdminLayout>
+                <AdminDashboard />
+              </AdminLayout>
+            </ProtectedRoute>
+          }
+        />
+        
+        <Route 
           path="/admin/dashboard"
           element={
             <ProtectedRoute>
-              <AdminDashboard />
+              <AdminLayout>
+                <AdminDashboard />
+              </AdminLayout>
             </ProtectedRoute>
           }
         />
@@ -83,7 +99,9 @@ function App() {
           path="/admin/products"
           element={
             <ProtectedRoute>
-              <Products />
+              <AdminLayout>
+                <Products />
+              </AdminLayout>
             </ProtectedRoute>
           }
         />
@@ -92,7 +110,9 @@ function App() {
           path="/admin/create-product"
           element={
             <ProtectedRoute>
-              <CreateProduct />
+              <AdminLayout>
+                <CreateProduct />
+              </AdminLayout>
             </ProtectedRoute>
           }
         />
@@ -101,7 +121,9 @@ function App() {
           path="/admin/edit-product/:id"
           element={
             <ProtectedRoute>
-              <EditProduct />
+              <AdminLayout>
+                <EditProduct />
+              </AdminLayout>
             </ProtectedRoute>
           }
         />
@@ -110,7 +132,9 @@ function App() {
           path="/admin/reports"
           element={
             <ProtectedRoute>
-              <Reports />
+              <AdminLayout>
+                <Reports />
+              </AdminLayout>
             </ProtectedRoute>
           }
         />
@@ -119,7 +143,31 @@ function App() {
           path="/admin/settings"
           element={
             <ProtectedRoute>
-              <Settings />
+              <AdminLayout>
+                <Settings />
+              </AdminLayout>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/ai-dashboard"
+          element={
+            <ProtectedRoute>
+              <AdminLayout>
+                <AIDashboard />
+              </AdminLayout>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/invoice-scanner"
+          element={
+            <ProtectedRoute>
+              <AdminLayout>
+                <InvoiceScanner />
+              </AdminLayout>
             </ProtectedRoute>
           }
         />
