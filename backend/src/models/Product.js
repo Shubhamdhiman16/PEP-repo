@@ -1,36 +1,5 @@
 const mongoose = require("mongoose");
 
-<<<<<<< HEAD
-const productSchema = new mongoose.Schema(
-    {
-        name: {
-            type: String,
-            required: true,
-            trim: true,
-        },
-        price: {
-            type: Number,
-            required: true,
-            min: 0,
-        },
-        stock: {
-            type: Number,
-            required: true,
-            min: 0,
-            default: 0,
-        },
-        description: {
-            type: String,
-            trim: true,
-        },
-        category: {
-            type: String,
-            trim: true,
-        }
-    },
-    { timestamps: true }
-);
-=======
 const productSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -59,6 +28,5 @@ const productSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
->>>>>>> 736e3cd (billing_controllers)
 
 module.exports = mongoose.model("Product", productSchema);
